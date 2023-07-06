@@ -1,10 +1,29 @@
-import { Request, Response } from "express";
+import { User } from "../entities";
 import { userServices } from "../services";
-import { UserCreate, UserRead, UserReturn, UserUpdate } from "../interfaces";
+import { Request, Response } from "express";
+import { IUserCreate, IUserRead, IUserReturn, IUserUpdate } from "../interfaces";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
-  const user: UserReturn = await userServices.create(req.body);
+  const user: IUserReturn = await userServices.create(req.body);
   return res.status(201).json(user);
 };
 
-export default { create };
+const read = async (req: Request, res: Response): Promise<Response> => {
+  const admin: boolean = res.locals.decoded.admin;
+  const users: IUserRead = await userServices.read();
+
+  return res.status(200).json(users);
+};
+
+const update = async  (req: Request, res: Response): Promise<Response> => {
+  const user: IUserReturn = await userServices.update(res.locals.foundUser, req.body);
+
+  return res.status(200).json(user);
+}
+
+const erase = async  (req: Request, res: Response): Promise<Response> => {
+  await userServices.erase(res.locals.foundUser);
+
+  return res.status(204).send();
+}
+export default { create, read, update, erase };

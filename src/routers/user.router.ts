@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { userCreateSchema } from "../schemas";
+import { userCreateSchema, userUpdateSchema } from "../schemas";
 import { userController } from "../controllers";
 import middlewares from "../middlewares";
 
@@ -8,5 +8,25 @@ export const userRouter = Router();
 userRouter.post(
   "",
   middlewares.validateBody(userCreateSchema),
+  middlewares.uniqueEmail,
   userController.create
 );
+
+userRouter.get("",
+  middlewares.verifyToken,
+  middlewares.isAdmin,
+  userController.read
+)
+userRouter.use("/:id", middlewares.idExists)
+
+userRouter.patch("/:id",
+  middlewares.validateBody(userUpdateSchema),
+  middlewares.verifyToken,
+  middlewares.isAdminOrOwner,
+  userController.update
+)
+
+userRouter.delete("/:id",
+  middlewares.verifyToken,
+  middlewares.isAdmin,
+  userController.erase)

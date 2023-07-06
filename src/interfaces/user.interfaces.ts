@@ -6,12 +6,12 @@ import {
   userUpdateSchema,
 } from "../schemas";
 import { User } from "../entities";
-import { Repository } from "typeorm";
+import { DeepPartial, Repository } from "typeorm";
 
-type UserCreate = z.infer<typeof userCreateSchema>;
-type UserRead = z.infer<typeof userReadSchema>;
-type UserReturn = z.infer<typeof userReturnSchema>;
-type UserUpdate = z.infer<typeof userUpdateSchema>;
-type UserRepo = Repository<User>;
+type IUserCreate = z.infer<typeof userCreateSchema>;
+type IUserRead = z.infer<typeof userReadSchema>;
+type IUserReturn = z.infer<typeof userReturnSchema>;
+type IUserUpdate = DeepPartial<typeof userUpdateSchema>;
+type IUserRepo = Repository<User>;
 
-export { UserCreate, UserRead, UserReturn, UserUpdate, UserRepo };
+export { IUserCreate, IUserRead, IUserReturn, IUserUpdate, IUserRepo };

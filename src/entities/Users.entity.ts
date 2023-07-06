@@ -7,8 +7,10 @@ import {
   DeleteDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
 } from "typeorm";
 import { getRounds, hashSync } from "bcryptjs";
+import { Schedule } from "./Schedules.entity";
 
 @Entity("users")
 export class User {
@@ -35,6 +37,9 @@ export class User {
 
   @DeleteDateColumn({ type: "date" })
   deletedAt: string | null;
+
+  @OneToMany(() => Schedule, (s) => s.user)
+  schedules: Schedule[];
 
   @BeforeInsert()
   @BeforeUpdate()

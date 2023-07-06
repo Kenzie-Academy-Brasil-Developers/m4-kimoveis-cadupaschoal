@@ -7,8 +7,11 @@ import {
   OneToOne,
   ManyToOne,
   BeforeInsert,
+  JoinColumn,
+  AfterInsert,
+  OneToMany,
 } from "typeorm";
-import { Address, Category } from "./index";
+import { Address, Category, Schedule } from "./index";
 
 @Entity("real_estate")
 export class RealEstate {
@@ -19,7 +22,7 @@ export class RealEstate {
   sold: boolean;
 
   @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
-  value: number;
+  value: number | string;
 
   @Column({ type: "integer" })
   size: number;
@@ -30,15 +33,19 @@ export class RealEstate {
   @UpdateDateColumn({ type: "date" })
   updatedAt: string;
 
-  @OneToOne(() => Address, (a) => a.id)
-  addressId: number;
+  @OneToOne(() => Address, (a) => a.real_estate)
+  @JoinColumn()
+  address: Address;
 
-  @ManyToOne(() => Category, (c) => c.id)
-  categoryId: number;
+  @ManyToOne(() => Category, (c) => c.real_estate)
+  category: Category;
 
+  @OneToMany(() => Schedule, (s) => s.realEstate)
+  schedules: Schedule[];
+  
   @BeforeInsert()
   changeToNumber() {
-    this.value = Number(this.value);
-    this.size = Number(this.size);
+    this.value = (+this.value);
+    this.size = (+this.size);
   }
 }
