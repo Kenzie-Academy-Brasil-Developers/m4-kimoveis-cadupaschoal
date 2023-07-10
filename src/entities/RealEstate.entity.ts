@@ -37,15 +37,15 @@ export class RealEstate {
   @JoinColumn()
   address: Address;
 
-  @ManyToOne(() => Category, (c) => c.real_estate)
+  @ManyToOne(() => Category, (c) => c.realEstate)
   category: Category;
 
   @OneToMany(() => Schedule, (s) => s.realEstate)
   schedules: Schedule[];
-  
+
   @BeforeInsert()
   changeToNumber() {
-    this.value = (+this.value);
-    this.size = (+this.size);
+    this.value = +this.value;
+    this.size = +this.size;
   }
 }

@@ -5,28 +5,38 @@ import {
   IUserUpdate,
   IUserRepo,
 } from "./user.interfaces";
-import { IAddress,ICreateAddress, IAddressManual } from "./address.interface";
+import { IAddress, ICreateAddress, IAddressManual } from "./address.interface";
 import { ISessionCreate, ISessionReturn } from "./session.interfaces";
-import { ICategory,ICategoryCreate, ICategoryRealEstate } from "./category.interfaces";
-import { IRealEstate, ICreateRealEstate, IReturnRealEstate, IDeepCreateRealEstate } from "./realEstate.interface";  
-export { 
+import {
+  ICategory,
+  ICategoryCreate,
+  ICategoryRealEstate,
+} from "./category.interfaces";
+import {
+  IRealEstate,
+  ICreateRealEstate,
+  IReturnRealEstate,
+  IDeepCreateRealEstate,
+} from "./realEstate.interface";
+import { ISchedule, ICreateSchedule } from "./schedule.interface";
+export {
   IAddressManual,
   IDeepCreateRealEstate,
   IAddress,
-  IUserRepo, 
+  IUserRepo,
   ICategory,
-  IUserRead, 
-  IUserUpdate, 
-  IUserReturn, 
-  IUserCreate, 
-  IRealEstate, 
+  IUserRead,
+  IUserUpdate,
+  IUserReturn,
+  IUserCreate,
+  IRealEstate,
   ISessionReturn,
-  ISessionCreate, 
+  ISessionCreate,
   ICreateAddress,
   ICategoryCreate,
   ICreateRealEstate,
   ICategoryRealEstate,
-  IReturnRealEstate
+  IReturnRealEstate,
+  ISchedule,
+  ICreateSchedule,
 };
-
-

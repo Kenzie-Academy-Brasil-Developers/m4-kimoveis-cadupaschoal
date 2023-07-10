@@ -19,6 +19,13 @@ const userCreateSchema = userSchema.omit({
 });
 
 const userReturnSchema = userSchema.omit({ password: true });
+const userReturnUpdateSchema = userSchema.omit({
+  admin: true,
+  password: true,
+  createdAt: true,
+  updatedAt: true,
+  deletedAt: true,
+});
 const userReadSchema = userReturnSchema.array();
 const userUpdateSchema = userCreateSchema.omit({ admin: true }).partial();
 
@@ -28,4 +35,5 @@ export {
   userReadSchema,
   userReturnSchema,
   userUpdateSchema,
+  userReturnUpdateSchema,
 };

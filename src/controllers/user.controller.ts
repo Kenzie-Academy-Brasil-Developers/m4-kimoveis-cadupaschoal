@@ -1,7 +1,12 @@
 import { User } from "../entities";
 import { userServices } from "../services";
 import { Request, Response } from "express";
-import { IUserCreate, IUserRead, IUserReturn, IUserUpdate } from "../interfaces";
+import {
+  IUserCreate,
+  IUserRead,
+  IUserReturn,
+  IUserUpdate,
+} from "../interfaces";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const user: IUserReturn = await userServices.create(req.body);
@@ -15,15 +20,15 @@ const read = async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).json(users);
 };
 
-const update = async  (req: Request, res: Response): Promise<Response> => {
-  const user: IUserReturn = await userServices.update(res.locals.foundUser, req.body);
+const update = async (req: Request, res: Response): Promise<Response> => {
+  const user = await userServices.update(res.locals.foundUser, req.body);
 
   return res.status(200).json(user);
-}
+};
 
-const erase = async  (req: Request, res: Response): Promise<Response> => {
+const erase = async (req: Request, res: Response): Promise<Response> => {
   await userServices.erase(res.locals.foundUser);
 
   return res.status(204).send();
-}
+};
 export default { create, read, update, erase };

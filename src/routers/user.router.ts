@@ -12,21 +12,27 @@ userRouter.post(
   userController.create
 );
 
-userRouter.get("",
+userRouter.get(
+  "",
   middlewares.verifyToken,
   middlewares.isAdmin,
   userController.read
-)
-userRouter.use("/:id", middlewares.idExists)
+);
+// userRouter.use("/:id", middlewares.idExists);
 
-userRouter.patch("/:id",
+userRouter.patch(
+  "/:id",
   middlewares.validateBody(userUpdateSchema),
+  middlewares.idExists,
   middlewares.verifyToken,
   middlewares.isAdminOrOwner,
   userController.update
-)
+);
 
-userRouter.delete("/:id",
+userRouter.delete(
+  "/:id",
+  middlewares.idExists,
   middlewares.verifyToken,
   middlewares.isAdmin,
-  userController.erase)
+  userController.erase
+);

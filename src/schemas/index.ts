@@ -1,7 +1,7 @@
-import { 
-  categorySchema, 
+import {
+  categorySchema,
   createCategorySchema,
-  categoryRealEstateSchema 
+  categoryRealEstateSchema,
 } from "./category.schemas";
 import {
   userSchema,
@@ -9,10 +9,17 @@ import {
   userReturnSchema,
   userUpdateSchema,
   userCreateSchema,
+  userReturnUpdateSchema,
 } from "./user.schema";
+
+import {
+  realEstateSchema,
+  createRealEstateSchema,
+  returnRealEstateSchema,
+} from "./realEstate.schema";
 import { sessionSchema } from "./session.schema";
 import { addressSchema, createAddress } from "./address.schemas";
-import { realEstateSchema,createRealEstateSchema,returnRealEstateSchema } from "./realEstate.schema";
+import { scheduleSchema, createScheduleSchema } from "./shedule.schemas";
 
 export {
   userSchema,
@@ -21,12 +28,15 @@ export {
   createAddress,
   userReadSchema,
   categorySchema,
+  scheduleSchema,
   userCreateSchema,
   userReturnSchema,
   userUpdateSchema,
   realEstateSchema,
   createCategorySchema,
+  createScheduleSchema,
   createRealEstateSchema,
   returnRealEstateSchema,
   categoryRealEstateSchema,
+  userReturnUpdateSchema,
 };
