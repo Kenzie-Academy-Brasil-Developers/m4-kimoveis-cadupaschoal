@@ -12,15 +12,12 @@ export class Address {
   @Column({ length: 8 })
   zipCode: string;
 
-  @Column({ length: 7, nullable: true})
-  number: string;
+  @Column({ length: 7, nullable: true, type: "varchar" })
+  number?: string | null | undefined;
 
   @Column({ length: 20 })
   city: string;
 
   @Column({ length: 2 })
   state: string;
-
-  @OneToOne(() => RealEstate, (rs) => rs.address)
-  real_estate: RealEstate;
 }

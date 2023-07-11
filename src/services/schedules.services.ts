@@ -1,11 +1,6 @@
 import { Schedule } from "../entities";
-import {
-  scheduleRepository,
-  realEstateRepository,
-  userRepository,
-} from "../repositories";
-import { ISchedule, ICreateSchedule } from "../interfaces";
-import { scheduleSchema, createScheduleSchema } from "../schemas";
+import { scheduleRepository } from "../repositories";
+import { ICreateSchedule } from "../interfaces";
 import { AppError } from "../errors";
 
 const create = async (

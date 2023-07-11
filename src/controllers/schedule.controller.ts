@@ -1,7 +1,5 @@
-import { Schedule } from "../entities";
 import { schedulesServides } from "../services";
 import { Request, Response } from "express";
-import { ISchedule, ICreateSchedule } from "../interfaces";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const userId = res.locals.decoded.sub;

@@ -33,7 +33,7 @@ export class RealEstate {
   @UpdateDateColumn({ type: "date" })
   updatedAt: string;
 
-  @OneToOne(() => Address, (a) => a.real_estate)
+  @OneToOne(() => Address)
   @JoinColumn()
   address: Address;
 
@@ -42,10 +42,4 @@ export class RealEstate {
 
   @OneToMany(() => Schedule, (s) => s.realEstate)
   schedules: Schedule[];
-
-  @BeforeInsert()
-  changeToNumber() {
-    this.value = +this.value;
-    this.size = +this.size;
-  }
 }

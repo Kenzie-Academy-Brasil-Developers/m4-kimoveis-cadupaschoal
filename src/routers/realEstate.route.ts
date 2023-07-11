@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { createRealEstateSchema, realEstateSchema } from "../schemas";
 import { realEstateController } from "../controllers";
 import middlewares from "../middlewares";
+import { createRealEstateSchema } from "../schemas/realEstate.schemas";
 
 export const realEstateRouter = Router();
 

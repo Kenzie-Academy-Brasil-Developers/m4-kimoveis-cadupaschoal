@@ -1,7 +1,7 @@
 import { Category } from "../entities";
 import { categoryServices } from "../services";
 import { Request, Response } from "express";
-import { ICategory, ICategoryRealEstate } from "../interfaces";
+import { ICategory } from "../interfaces";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const category: ICategory = await categoryServices.create(req.body);

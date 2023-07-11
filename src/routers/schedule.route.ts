@@ -9,9 +9,9 @@ scheduleRouter.post(
   "",
   middlewares.verifyToken,
   middlewares.validateBody(createScheduleSchema),
+  middlewares.verifyRealEstate,
   middlewares.verifyDay,
   middlewares.verifyHour,
-  middlewares.verifyRealEstate,
   scheduleController.create
 );
 

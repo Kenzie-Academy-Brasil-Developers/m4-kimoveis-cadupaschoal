@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { realEstateSchema } from "../schemas";
+import { realEstateSchema } from "./realEstate.schemas";
 
 const categorySchema = z.object({
   id: z.number().positive(),

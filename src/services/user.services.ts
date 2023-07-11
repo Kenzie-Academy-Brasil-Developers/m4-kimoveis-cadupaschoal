@@ -6,12 +6,7 @@ import {
   IUserRead,
   IUserUpdate,
 } from "../interfaces";
-import {
-  userReadSchema,
-  userReturnSchema,
-  userUpdateSchema,
-  userReturnUpdateSchema,
-} from "../schemas";
+import { userReadSchema, userReturnSchema } from "../schemas";
 
 const create = async (payload: IUserCreate): Promise<IUserReturn> => {
   const user: User = userRepository.create(payload);
